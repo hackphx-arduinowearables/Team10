@@ -22,8 +22,7 @@
 
 LEDMatrix led = LEDMatrix(ADDRESS);
 char buffer[3];
-int ctr = 0;
-int currentMode = 0;
+int ctr, currentMode;
 
 void setup () {
    led.setDir(DIR_NORMAL);
@@ -31,13 +30,17 @@ void setup () {
    backlightOn();
    clearLCD();
    adxl_init();
+   currentMode = 0;
+   ctr = 0;
 }
 
 void loop () {
   double ax, ay, az, volts;
   char* volts_output;
-  switch (currentMode) {
-    case 0:
+  Serial.println(sprintf(buffer, "%d", currentMode));
+  Serial.println(sprintf(buffer, "%d", ctr));
+  if (currentMode == 0) {
+
       Serial.println("We're a Volt Meter");
       led.sendChar('V');
       volts = analogRead(A5) / VOLTS_CONVERTER;
@@ -48,29 +51,19 @@ void loop () {
       selectLineTwo();
       Serial1.write(volts_output);
       Serial.write(volts_output);
-      break;
-    case 1:
+  }
+  if (currentMode == 1) {
       Serial.println("We're a Heat Sensor");
       led.sendChar('H');
-      break;
-    default:
-      ;
+      selectLineOne();
+      Serial1.write("Temp.");
+      selectLineTwo();
+      Serial1.write("100C");
   }
   
   readAcc(&ax, &ay, &az);
-  Serial.println(ax);
-  if (ax < 0) {
-    ctr++;
-  }
-  
-  if (ctr > 4) {
-    Serial.println("CHANGING MODES");
-    ctr = 0;
-    currentMode++;
-    if (currentMode == MODES_TOTAL) {
-      currentMode = 0;
-    }
-  }
+  //do something with the 3axis
+
   delay (500);
 }
 
