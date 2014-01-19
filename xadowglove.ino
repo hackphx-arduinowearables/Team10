@@ -6,6 +6,7 @@
 
 #define ADDRESS 0x04
 #define VOLTS_CONVERTER 310.0
+#define TEMP_CONVERTER 6.0
 #define MODE_VOLT_METER 0
 #define MODE_HEAT_SENSOR 1
 #define MODES_TOTAL 2
@@ -35,13 +36,23 @@ void setup () {
 }
 
 void loop () {
-  double ax, ay, az, volts;
-  char* volts_output;
-  Serial.println(sprintf(buffer, "%d", currentMode));
-  Serial.println(sprintf(buffer, "%d", ctr));
-  if (currentMode == 0) {
+  double ax, ay, az, volts, temperature;
+  char* volts_output, temp_output;
+  
+  readAcc(&ax, &ay, &az);
+  //do something with the 3axis
+  
+  if (ax < -200) {
+    currentMode = 0;
+    clearLCD();
+  }
+  
+  if (ay > 200) {
+    currentMode = 1;
+    clearLCD();
+  }
 
-      Serial.println("We're a Volt Meter");
+  if (currentMode == 0) {
       led.sendChar('V');
       volts = analogRead(A5) / VOLTS_CONVERTER;
       volts_output = dtostrf(volts, 3, 2, buffer);
@@ -52,21 +63,22 @@ void loop () {
       Serial1.write(volts_output);
       Serial.write(volts_output);
   }
-  if (currentMode == 1) {
-      Serial.println("We're a Heat Sensor");
-      led.sendChar('H');
-      selectLineOne();
-      Serial1.write("Temp.");
-      selectLineTwo();
-      Serial1.write("100C");
-  }
   
-  readAcc(&ax, &ay, &az);
-  //do something with the 3axis
+  if (currentMode == 1) {
+      led.sendChar('H');
+      temperature = analogRead(A5) / TEMP_CONVERTER;
+      Serial.println(volts);
+      volts_output = dtostrf(temperature, 3, 2, buffer);
+      strcat(volts_output,"f");
+      selectLineOne();
+      Serial1.write("Temperature");
+      selectLineTwo();
+      Serial1.write(volts_output);
+      Serial.write(volts_output);
+  }
 
   delay (500);
 }
-
 
 /* 3axis Accelerometer Convenience Methods */
 
