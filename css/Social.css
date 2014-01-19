@@ -1,0 +1,74 @@
+* Profile */
+	/*  Organization
+		.social block /// Adjust 
+			.content ///
+				#snetwork
+					#profile
+					#linkedin
+					#github
+					#twitter
+				#bio  /// Make 
+	*/
+
+	.social-block{width:100%; 
+		min-height:310px; margin-bottom:3%; position:relative; border-bottom:1px dotted #ccc; 
+		overflow:hidden;
+	}
+	.social-block strong{font-family: serif;
+	}
+
+	.social-block .content{	width:35%; padding:2% 0; padding:1%;
+	}
+	/* transition of icons*/
+		.social-block .content div#snetwork{list-style:none; position:relative;
+			transition: all ease-in-out 0.5s; -o-transition: all ease-in-out 0.5s; -moz-transition: all ease-in-out 0.5s; -webkit-transition: all ease-in-out 0.5s;
+		}
+
+		.social-block .content div#snetwork div{margin: auto; position: absolute; top: 0; left: 0;
+			transition: all ease-in-out 0.5s; -o-transition: all ease-in-out 0.5s; -moz-transition: all ease-in-out 0.5s; -webkit-transition: all ease-in-out 0.5s;
+		}
+
+		.social-block .content div#snetwork #profile img{width:125px; height:125px; margin-top:-2%; position:relative;
+		}
+		/* */
+		.social-block .content div#bio {transition: all ease-in-out 0.5s; -o-transition: all ease-in-out 0.5s; -moz-transition: all ease-in-out 0.5s; -webkit-transition: all ease-in-out 0.5s;
+			visibility: hidden;}
+
+	/* transition of icons*/
+		/* */
+		
+		.social-block .content div#snetwork div#linkedin{transition-delay:0.1s; -moz-transition-delay:0.1s; -webkit-transition-delay:0.1s; -o-transition-delay:0.1s;
+			visibility: hidden;
+		}
+		.social-block .content div#snetwork div#github {transition-delay:0.1s; -moz-transition-delay:0.1s; -webkit-transition-delay:0.1s; -o-transition-delay:0.1s;
+			visibility: hidden;
+		}
+		.social-block .content div#snetwork div#twitter {transition-delay:0.5s; -moz-transition-delay:0.5s; -webkit-transition-delay:0.5s; -o-transition-delay:0.5s;
+			visibility: hidden;
+		}
+		.social-block:hover .content div #bio{transition-delay:0.1s; -moz-transition-delay:0.1s; -webkit-transition-delay:0.1s; -o-transition-delay:0.1s;
+			visibility: hidden;
+		}
+			/* Void */
+			.social-block .content div#snetwork div#facebook {transition-delay:0.5s; -moz-transition-delay:0.5s; -webkit-transition-delay:0.5s; -o-transition-delay:0.5s;
+			visibility: hidden;
+			}
+
+
+	/* makes profile image disappear */
+		/* */
+		
+		/*.social-block:hover .content div#snetwork #facebook{left:50%; top:-25px; visibility: visible;
+		}*/
+		.social-block:hover .content div#snetwork #twitter{left:50%;top:-25px; visibility: visible;
+		}
+		.social-block:hover .content div#snetwork #linkedin{left:100%;top:-25px;visibility: visible; 
+		}
+		.social-block:hover .content div#snetwork #github{left:150%;top:-25px;visibility: visible;
+		}
+		.social-block:hover .content div #bio{width:100%; left: 50%; top: 10px; visibility:  visible;}
+
+		.social-block:hover .content div#bio .description{width:100%; 
+			left: 150%; top: 10px; visibility:  visible;}
+
+
