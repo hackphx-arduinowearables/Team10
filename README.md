@@ -21,3 +21,6 @@ http://youtu.be/HzekUVyMuoY
 Xadow Boards we started with: http://s3.amazonaws.com/xadow/images/4.jpg
 Dashboard layout: http://s3.amazonaws.com/xadow/images/20140118_190159.jpg
 Final Prototype: http://s3.amazonaws.com/xadow/images/5.jpg
+
+
+https://plus.google.com/113990129854327148138/posts/BTvRFrR7rWa
