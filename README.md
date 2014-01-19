@@ -8,3 +8,7 @@ The Xadow Glove consists of a Xadow microcontroller, 3axis sensor and 5x7 LED Gr
 ##Modes
 
 The Device can be tilted to change the mode. Currently the only mode support and working is the Volt Meter but there are stubs to create more modes and to try and get them working.
+
+#Testing Video
+
+http://youtu.be/HzekUVyMuoY
